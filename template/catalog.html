@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shop</title>
+
+    <style>
+        #cart-button {
+        display: block;
+        margin: 20px auto; /* Center the button */
+        padding: 15px; /* Adjust padding to make the button larger */
+        width: 200px; /* Set the width as needed */
+        text-align: center;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid #007BFF; /* Add a border */
+        border-radius: 5px;
+        cursor: pointer;
+    }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px; /* Adjust the width as needed */
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Products</h1>
+
+<!-- Display all the items using Jinja2 for loop -->
+<div>
+    <a id="cart-button" href="{{ url_for('get_cart') }}">Go to Cart</a>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - ${{ product.price }} 
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <input type="hidden" name="id" value="{{ product.id }}">
+                    <input type="hidden" name="price" value="{{ product.price }}">
+                    <input type="hidden" name="name" value="{{ product.name }}">
+                    <div class="button-container">
+                        <button type="submit">Add to Cart</button>
+                    </div>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Add to Cart Form -->
+
+</body>
+</html>

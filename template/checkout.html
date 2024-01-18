@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .checkout-btn {
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Checkout</h1>
+    
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Information</th>
+                    <th>Shipping Address</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username">
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email">
+                    </td>
+                    <td>
+                        <label for="address">Address:</label>
+                        <textarea id="address" name="address"></textarea>
+                    </td>
+                    <td>
+                        <label for="payment">Payment Method:</label>
+                        <select id="payment" name="payment">
+                            <option value="credit">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+
+        <!-- <a id="cart-button" href="{{ url_for('process_checkout') }}">Checkout</a> -->
+
+    </form>
+    <form action="{{ url_for('process_checkout') }}" method="post">
+        <div class="button-container">
+            <button type="submit">Checkout</button>
+        </div>
+    </form>
+</body>
+</html>
